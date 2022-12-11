@@ -24,7 +24,3 @@ def tag_article(request, category_id, article_id, tag_id):
     articles = Article.objects.filter(tags__name__icontains=tag.name)
     return render(request, 'blog/tag_article.html', {'articles': articles, 'tag': tag})
 # Самое читабельное что я нашёл на просторах интернета, ещё можно было смотреть ютуб где я нашёл только один +- норм ролик в котором и так до чёрта рекламы и всё не по сути
-
-
-
-
