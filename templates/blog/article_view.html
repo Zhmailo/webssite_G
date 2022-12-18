@@ -1,11 +1,12 @@
-<h2>{{ article.title }}</h2>
-
+{% extends 'base.html' %}
+{% block content %}
+    <h2>{{ article.title }}</h2>
+    <img class="img-thumbnail" src="{{ article.image.url }}" alt=""></a>
 <p>{{ article.text }}</p>
 <p>
     {% for tag in article.tags.all %}
         <a href="">#{{ tag.name }}</a>&nbsp;
-        <a href="{% url 'blog_tag_article' category_id=category.id article_id=article.id tag_id=tag.id %}">#{{ tag.name }}</a>&nbsp;
-
+        <a href="{% url 'tag_search_view' tag_id=tag.id %}">#{{ tag.name }}</a>&nbsp;
     {% endfor %}
 
 </p>
@@ -13,3 +14,4 @@
     Дата: <b>{{ article.publish_date }}</b>
     Категория: <b>{{ category.name }}</b>
 </p>
+{% endblock %}
