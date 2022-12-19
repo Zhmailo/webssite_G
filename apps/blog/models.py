@@ -2,6 +2,7 @@ from django.db import models
 from imagekit.models import ProcessedImageField,ImageSpecField
 from pilkit.processors import ResizeToFill
 
+
 class BlogCategory(models.Model):
     name = models.CharField(verbose_name='Имя категории', max_length=255)
     # image = models.ImageField(verbose_name='Изображение',upload_to='blog/category/',null=True)
@@ -12,6 +13,7 @@ class BlogCategory(models.Model):
         null=True,
         blank=True
     )
+
     def __str__(self):
         return self.name
 
