@@ -1,15 +1,17 @@
 from django.db import models
-from imagekit.models import ProcessedImageField,ImageSpecField
+from imagekit.models import ProcessedImageField, ImageSpecField
 from pilkit.processors import ResizeToFill
+from django.utils.safestring import mark_safe
+from config.settings import MEDIA_ROOT
 
 
 class BlogCategory(models.Model):
     name = models.CharField(verbose_name='Имя категории', max_length=255)
-    # image = models.ImageField(verbose_name='Изображение',upload_to='blog/category/',null=True)
+    # image = models.ImageField(verbose_name='Изабражение', upload_to='blog/category/', null=True)
     image = ProcessedImageField(
         verbose_name='Изображение',
         upload_to='blog/category/',
-        processors=[ResizeToFill(600,400)],
+        processors=[ResizeToFill(600, 400)],
         null=True,
         blank=True
     )
@@ -20,6 +22,18 @@ class BlogCategory(models.Model):
     class Meta:
         verbose_name = 'Категория блога'
         verbose_name_plural = 'Категории блога'
+
+    def image_tag_thumbnail(self):
+        if self.image:
+            return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image}' width='70'>")
+
+    image_tag_thumbnail.short_description = 'Изображения'
+
+    def image_tag(self):
+        if self.image:
+            return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image}'>")
+
+    image_tag.short_description = 'Изображения'
 
 
 class Tag(models.Model):
@@ -39,17 +53,16 @@ class Article(models.Model):
     text_preview = models.TextField(verbose_name='Текст-превью', null=True, blank=True)
     text = models.TextField(verbose_name='Текст')
     publish_date = models.DateTimeField(verbose_name='Дата публикации')
-    tags = models.ManyToManyField(to='Tag',verbose_name='Теги',blank=True)
+    tags = models.ManyToManyField(to=Tag, verbose_name='Теги', blank=True)
     image = ProcessedImageField(
         verbose_name='Изображение',
         upload_to='blog/article/',
-        processors=[],
         null=True,
         blank=True
     )
     image_thumbnail = ImageSpecField(
         source='image',
-        processors=[ResizeToFill(600,400)]
+        processors=[ResizeToFill(600, 400)]
     )
     updated_at = models.DateTimeField(verbose_name='Дата изменения', auto_now=True)
     created_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
