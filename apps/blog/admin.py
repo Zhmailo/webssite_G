@@ -42,3 +42,4 @@ class ArticleAdmin(admin.ModelAdmin):
     tag_link.short_description = 'Теги'
 
 # Должно вроде всё быть так
+# Должно вроде всё быть так
