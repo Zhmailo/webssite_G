@@ -4,8 +4,8 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.http import urlencode
 
-
 admin.site.register(Tag)
+
 
 @admin.register(BlogCategory)
 class BlogCategory(admin.ModelAdmin):
@@ -28,6 +28,12 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'title']
     list_filter = ['category', 'tags']
 
+    def user(self, instance):
+        if instance.user:
+            url = reverse('admin:user_user_change', args=[instance.user.id])
+            return format_html(f"<a href='{url}'>{instance.user}</a>")
+
+    user.short_description = 'Автор'
     def category_link(self, instance):
         url = reverse('admin:blog_blogcategory_change', args=[instance.category_id])
         return format_html(f"<a href='{url}'>{instance.category.name}</a>")
