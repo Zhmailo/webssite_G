@@ -4,12 +4,11 @@ from django.utils.safestring import mark_safe
 from phonenumber_field.modelfields import PhoneNumberField
 from imagekit.models import ProcessedImageField, ImageSpecField
 from pilkit.processors import ResizeToFill
-
 from config.settings import MEDIA_ROOT
 
 
 class User(AbstractUser):
-    phone = PhoneNumberField(verbose_name="Телефон", blank=True, null=True)
+    phone = PhoneNumberField(verbose_name='Телефон', blank=True, null=True)
     image = ProcessedImageField(
         verbose_name='Изображение',
         upload_to='user/',
@@ -20,6 +19,7 @@ class User(AbstractUser):
         source='image',
         processors=[ResizeToFill(200, 200)]
     )
+
 
     def image_tag_thumbnail(self):
         if self.image:
@@ -36,4 +36,3 @@ class User(AbstractUser):
             return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image_thumbnail}'>")
 
     image_tag.short_description = 'Текущий аватар'
-# Create your models here.
