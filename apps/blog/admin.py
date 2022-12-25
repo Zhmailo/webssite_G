@@ -28,19 +28,4 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'title']
     list_filter = ['category', 'tags']
 
-    def category_link(self, instance):
-        url = reverse('admin:blog_blogcategory_change', args=[instance.category_id])
-        return format_html(f"<a href='{url}'>{instance.category.name}</a>")
 
-    category_link.short_description = 'Категория'
-
-    def tag_link(self, instance):
-        str_end = f""
-        for tag in instance.tags.all():
-            url = reverse('admin:blog_tag_change', args=[tag.id])
-            str_end += f"<a href='{url}'>#{tag.name}, </a>"
-        str_end = str_end[: str_end.rfind(",")]
-        return format_html(str_end)
-
-    tag_link.short_description = 'Теги'
-# Всё ок
