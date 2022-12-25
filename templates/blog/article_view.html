@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>{{ article.title }}</h2>
-    <img class="img-thumbnail" src="{{ article.image.url }}" alt=""></a>
+    <img class="img-thumbnail" src="{{ article.image.url }}" alt="">
 <p>{{ article.text }}</p>
 <p>
     {% for tag in article.tags.all %}
@@ -10,6 +10,16 @@
     {% endfor %}
 
 </p>
+
+
+
+    {% if article.user %}
+        <p><b>Автор поста: </b>{{ article.user.first_name }} {{ article.user.last_name }}</p>
+        {% if article.user.image %}
+            <img class='img-thumbnail' src="{{ article.user.image_thumbnail.url }}" alt="">
+        {% endif %}
+
+    {% endif %}
 <p style="text-align: right">
     Дата: <b>{{ article.publish_date }}</b>
     Категория: <b>{{ category.name }}</b>
