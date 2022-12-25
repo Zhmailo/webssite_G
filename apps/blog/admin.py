@@ -3,9 +3,8 @@ from apps.blog.models import BlogCategory, Article, Tag
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.http import urlencode
+
 admin.site.register(Tag)
-
-
 
 
 @admin.register(BlogCategory)
@@ -25,9 +24,9 @@ class BlogCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'category_link','publish_date', 'created_at','tag_link','user']
-    list_display_links = ['id', 'title','tag_link']
-    list_filter = ['category','tags']
+    list_display = ['id', 'title', 'category_link', 'publish_date', 'created_at', 'tag_link', 'user']
+    list_display_links = ['id', 'title', 'tag_link']
+    list_filter = ['category', 'tags']
 
     def user(self, instance):
         if instance.user:
@@ -35,15 +34,12 @@ class ArticleAdmin(admin.ModelAdmin):
             return format_html(f"<a href='{url}'>{instance.user}</a>")
 
     user.short_description = 'Автор'
+
     def category_link(self, instance):
         url = reverse('admin:blog_article_change', args=[instance.category_id])
         return format_html(f"<a href='{url}'>{instance.category.name}</a>")
 
-
-
-
-
-    def tag_link(self,instance):
+    def tag_link(self, instance):
         comma = ""
         for tags in instance.tags.all():
             url = reverse('admin:blog_tag_change', args=[tags.id])
