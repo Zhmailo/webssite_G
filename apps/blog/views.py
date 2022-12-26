@@ -25,4 +25,3 @@ def tag_search_view(request, tag_id):
     return render(request, 'blog/tag_search.html', {'tag': tag, 'articles': articles})
 
 
-
