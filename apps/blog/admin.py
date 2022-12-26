@@ -28,12 +28,12 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display_links = ['id', 'title', 'tag_link']
     list_filter = ['category', 'tags']
 
-    def user_s(self, instance):
-        if instance.user_s:
-            url = reverse('admin:user_user_change', args=[instance.user_s.id])
-            return format_html(f"<a href='{url}'>{instance.user_s}</a>")
+    def user(self, instance):
+        if instance.user:
+            url = reverse('admin:user_user_change', args=[instance.user.id])
+            return format_html(f"<a href='{url}'>{instance.user}</a>")
 
-    user_s.short_description = 'Автор'
+    user.short_description = 'Автор'
 
     def category_link(self, instance):
         url = reverse('admin:blog_article_change', args=[instance.category_id])
