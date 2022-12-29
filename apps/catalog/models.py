@@ -50,7 +50,8 @@ class Category(MPTTModel):
     class Meta:
         verbose_name = 'Категория',
         verbose_name_plural = 'Категории'
-#
+##
+
 
 class Product(models.Model):
     name = models.CharField(verbose_name='Название', max_length=255)
