@@ -17,35 +17,46 @@ class BlogCategoryAdmin(admin.ModelAdmin):
     def article_count(self, instance):
         articles = Article.objects.filter(category=instance).count()
         url = reverse('admin:blog_article_changelist') + '?' + urlencode({'category__id__exact': instance.id})
-        return format_html(f"<a href='{url}'>Статей: {articles}</a>")
+        return format_html(f'<a href="{url}">Статей: {articles}</a>')
 
-    article_count.short_description = 'К-во статей'
+    article_count.short_description = 'Кількість статей'
 
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'category_link', 'publish_date', 'created_at', 'tag_link', 'user']
-    list_display_links = ['id', 'title', 'tag_link']
-    list_filter = ['category', 'tags']
+    list_display = ['id', 'title', 'category_link', 'user_link', 'tag_list', 'created_at']
+    list_display_links = ['id', 'title']
+    list_filter = ['category', 'tag']
 
-    def user(self, instance):
+    def category_link(self, instance):
+        url = reverse('admin:blog_blogcategory_change', args=[instance.category_id])
+        return format_html(f"<a href='{url}'>{instance.category.name}</a>")
+
+    category_link.short_description = 'Категорії'
+
+    def user_link(self, instance):
         if instance.user:
             url = reverse('admin:user_user_change', args=[instance.user.id])
             return format_html(f"<a href='{url}'>{instance.user}</a>")
 
-    user.short_description = 'Автор'
+    user_link.short_description = 'Автор'
 
-    def category_link(self, instance):
-        url = reverse('admin:blog_article_change', args=[instance.category_id])
-        return format_html(f"<a href='{url}'>{instance.category.name}</a>")
+    def tag_list(self, instance):
+        tags = instance.tag.all()
+        # string_html = ''
+        # for i in range(len(tags)):
+        #     if i != 0:
+        #         string_html += ', '
+        #     string_html += f"<a href='{reverse('admin:blog_tag_change', args=[tags[i].id])}'>{tags[i].name}</a>"
+        # if tags:
+        #     return format_html(string_html)
 
-    def tag_link(self, instance):
-        comma = ""
-        for tags in instance.tags.all():
-            url = reverse('admin:blog_tag_change', args=[tags.id])
-            comma += f"<a href='{url}'>#{tags.name}, </a>"
-        comma = comma[: comma.rfind(",")]
-        return format_html(comma)
+        data = []
+        for tag in tags:
+            url = reverse('admin:blog_tag_change', args=[tag.id])
+            data.append(f"<a href='{url}'>{tag.name}</a>")
+        # data = str(data)[1:-1]
+        result = ', '.join(data)
+        return format_html(result)
 
-    category_link.short_description = 'Категория'
-    tag_link.short_description = 'Теги'
+    tag_list.short_description = 'Теги'
