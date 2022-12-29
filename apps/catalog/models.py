@@ -48,8 +48,8 @@ class Category(MPTTModel):
         return ' -> '.join(full_path[::-1])
 
     class Meta:
-        verbose_name='Категория',
-        verbose_name_plural='Категории'
+        verbose_name = 'Категория',
+        verbose_name_plural = 'Категории'
 
 
 class Product(models.Model):
@@ -61,10 +61,9 @@ class Product(models.Model):
     updated_at = models.DateTimeField(verbose_name='Дата изминения')
     created_at = models.DateTimeField(verbose_name='Дата создания')
 
-
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name='Продукт'
-        verbose_name_plural='Продукты'
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
