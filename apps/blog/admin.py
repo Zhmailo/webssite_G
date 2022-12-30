@@ -26,7 +26,7 @@ class BlogCategoryAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'category_link', 'user_link', 'tag_list', 'created_at']
     list_display_links = ['id', 'title']
-    list_filter = ['category', 'tag']
+    list_filter = ['category', 'tags']
 
     def category_link(self, instance):
         url = reverse('admin:blog_blogcategory_change', args=[instance.category_id])
