@@ -13,31 +13,32 @@ class Category(MPTTModel):
     slug = models.SlugField(unique=True, verbose_name='Слаг (ЧПУ)')
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
     image = ProcessedImageField(
-        verbose_name='Картинка',
+        verbose_name='Изображение',
         upload_to='catalog/category/',
         processors=[ResizeToFill(600, 400)],
         null=True,
         blank=True
     )
     parent = TreeForeignKey(
-        to='self',
+        'self',
         verbose_name='Родитель',
         related_name='child',
         on_delete=models.CASCADE,
-        blank=True, null=True
+        blank=True,
+        null=True
     )
 
     def image_tag_thumbnail(self):
         if self.image:
             return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image}' width='70'>")
 
-    image_tag_thumbnail.short_description = 'Картинка'
+    image_tag_thumbnail.short_description = 'Изображения'
 
     def image_tag(self):
         if self.image:
             return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image}'>")
 
-    image_tag.short_description = 'Картинка'
+    image_tag.short_description = 'Изображения'
 
     def __str__(self):
         full_path = [self.name]
@@ -47,23 +48,42 @@ class Category(MPTTModel):
             parent = parent.parent
         return ' -> '.join(full_path[::-1])
 
+    def get_absolute_url(self):
+        return reverse('categories', args=[self.slug])
+
     class Meta:
-        verbose_name = 'Категория',
+        verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
 
 class Product(models.Model):
     name = models.CharField(verbose_name='Название', max_length=255)
-    slug = models.SlugField(unique=True, verbose_name='Слаг (ЧПУ)', max_length=255)
+    slug = models.SlugField(unique=True, verbose_name='Слаг (ЧПУ)')
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
-    quantity = models.IntegerField(verbose_name='количество товара', null=True, blank=True)
+    quantity = models.IntegerField(verbose_name='Количество')
     price = models.DecimalField(verbose_name='Цена', max_digits=12, decimal_places=2, default=0)
-    updated_at = models.DateTimeField(verbose_name='Дата изминения')
-    created_at = models.DateTimeField(verbose_name='Дата создания')
+    categories = models.ManyToManyField(Category, verbose_name='Категории', through='ProductCategory', blank=True)
+    updated_at = models.DateTimeField(verbose_name='Дата изменения', auto_now=True)
+    created_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = 'Продукт'
-        verbose_name_plural = 'Продукты'
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
+
+
+class ProductCategory(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
+    is_main = models.BooleanField(verbose_name='Основная категория', default=False)
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        if self.is_main:
+            ProductCategory.objects.filter(product=self.product).update(is_main=False)
+        super().save(force_insert, force_update, using, update_fields)
+
+    class Meta:
+        verbose_name = 'Категория товара'
+        verbose_name_plural = 'Категории товара'
