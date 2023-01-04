@@ -5,21 +5,16 @@
 .main-menu{
     margin-top: 15px;
     margin-bottom: 30px;
-    text-align: right;
-
-    font-weight: bold;
-
 }
 .header-text{
-    color: #6596C4;
-    background-color:#E0FFFF;
-    font-size: 28px;
-    font-style: italic;
+    color: #2c519e;
+    font-size: 23px;
     text-align: right;
     font-weight: bold;
     height: 140px;
     line-height: 140px;
 }
+
 .blog-item{
     margin-bottom: 30px;
 }
@@ -39,7 +34,6 @@
     top: 3px;
     color: darkred;
 }
-
 
 .author{
     height: 50px;
@@ -65,4 +59,44 @@
     height: 50px;
     line-height: 50px;
     padding-left: 15px;
+}
+
+
+.my-header{
+    padding: 15px 0;
+}
+
+.product{
+    box-shadow: 0 0 4px #ccc;
+    transition: all .15s linear;
+}
+
+.product > a{
+    display: block;
+    text-decoration: none;
+}
+.product img{
+    width: 100%;
+}
+.product .product-name{
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    padding: 0 15px 15px;
+}
+.product-price{
+    text-align: center;
+    display: block;
+    padding: 15px;
+    font-size: 30px;
+}
+.product:hover{
+    transform: scale(1.03, 1.03);
+}
+.product:hover .product-name{
+    color: darkred;
+}
+.product-image{
+    display: block;
+    margin: 0 0 15px;
 }

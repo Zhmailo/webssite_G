@@ -1,8 +1,9 @@
 from django.db import models
-from apps.user.models import User
 from imagekit.models import ProcessedImageField, ImageSpecField
 from pilkit.processors import ResizeToFill
 from django.utils.safestring import mark_safe
+
+from apps.user.models import User
 from config.settings import MEDIA_ROOT
 
 
@@ -23,22 +24,6 @@ class BlogCategory(models.Model):
     class Meta:
         verbose_name = 'Категория блога'
         verbose_name_plural = 'Категории блога'
-
-    class Product(models.Model):
-        name = models.CharField(verbose_name='Назва', max_length=255)
-        slug = models.SlugField(unique=True, verbose_name='Слаг (ЧПУ)', max_length=255)
-        description = models.TextField(verbose_name='Описание', null=True, blank=True)
-        quantity = models.IntegerField(verbose_name='количество товару', null=True, blank=True)
-        price = models.DecimalField(verbose_name='Цена', max_digits=12, decimal_places=2, default=0)
-        updated_at = models.DateTimeField(verbose_name='Дата изменения')
-        created_at = models.DateTimeField(verbose_name='Дата создания')
-
-        def __str__(self):
-            return self.name
-
-        class Meta:
-            verbose_name = 'Продукт'
-            verbose_name_plural = 'Продукти'
 
     def image_tag_thumbnail(self):
         if self.image:
@@ -66,8 +51,7 @@ class Tag(models.Model):
 
 class Article(models.Model):
     category = models.ForeignKey(to=BlogCategory, verbose_name='Категория', on_delete=models.CASCADE)
-
-    user = models.ForeignKey(to=User, verbose_name='Автор', on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, verbose_name='Автор', on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(verbose_name='Заголовок', max_length=255)
     text_preview = models.TextField(verbose_name='Текст-превью', null=True, blank=True)
     text = models.TextField(verbose_name='Текст')
@@ -83,7 +67,6 @@ class Article(models.Model):
         source='image',
         processors=[ResizeToFill(600, 400)]
     )
-
     updated_at = models.DateTimeField(verbose_name='Дата изменения', auto_now=True)
     created_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
 

@@ -1,9 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from  django.contrib.auth.models import AbstractUser
 from django.utils.safestring import mark_safe
 from phonenumber_field.modelfields import PhoneNumberField
 from imagekit.models import ProcessedImageField, ImageSpecField
 from pilkit.processors import ResizeToFill
+
 from config.settings import MEDIA_ROOT
 
 
@@ -19,7 +20,6 @@ class User(AbstractUser):
         source='image',
         processors=[ResizeToFill(200, 200)]
     )
-
 
     def image_tag_thumbnail(self):
         if self.image:
