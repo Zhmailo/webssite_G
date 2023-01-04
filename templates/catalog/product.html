@@ -6,49 +6,40 @@
 
             <div class="col-xs-12 col-md-6">
                 <div class="row">
-                    <div class="col-6">
-                        <a href="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" class="product-image"
-                           data-lightbox="roadtrip">
-                            <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" alt=""
-                                 class="img-thumbnail">
-                        </a>
-                    </div>
-                    <div class="col-6">
-                        <a href="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" class="product-image"
-                           data-lightbox="roadtrip">
-                            <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" alt=""
-                                 class="img-thumbnail">
-                        </a>
-                    </div>
-                    <div class="col-6">
-                        <a href="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" class="product-image"
-                           data-lightbox="roadtrip">
-                            <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" alt=""
-                                 class="img-thumbnail">
-                        </a>
-                    </div>
-                    <div class="col-6">
-                        <a href="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" class="product-image"
-                           data-lightbox="roadtrip">
-                            <img src="https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg" alt=""
-                                 class="img-thumbnail">
-                        </a>
-                    </div>
+                    {% for image in product.images %}
+                        <div class="col-6">
+                            <a href="{{ image.image.url }}" class="product-image"
+                               data-lightbox="roadtrip">
+                                <img src="{{ image.image_thumbnail.url }}" alt=""
+                                     class="img-thumbnail">
+                            </a>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
 
             <div class="col-xs-12 col-md-6">
-                <p>Наличие: <b class="text-success">В наличии</b></p>
-                <b class="text-danger product-price">6000 грн.</b>
+                <p>Наличие:</p>
+                {% if product.quantity %}
+                        {% if product.quantity >= 5 %}
+                            <b class="text-success">В наличии</b>
+                        {% else %}
+                            <b class="text-danger">Заканчивается</b>
+                        {% endif %}
+                    {% else %}
+                        <b class="text-danger">Нет наличии</b>
+                    {% endif %}
+
+                <b class="text-danger product-price">{{ product.price }} грн.</b>
                 <form action="">
                     <div class="input-group mb-3">
                         <input type="number" min="1" step="1" max="100" value="1" class="form-control">
-                        <button class="btn btn-success" type="button" id="button-addon1">Купить</button>
+                        <button class="btn btn-success" type="button" id="button-addon1">Приобрести</button>
                     </div>
                 </form>
                 <br>
                 <h4 class="text-center">Описание</h4>
-                <p>Описание</p>
+                <p>{{ product.description }}</p>
             </div>
 
         </div>
