@@ -52,8 +52,8 @@ class Category(MPTTModel):
         return reverse('categories', args=[self.slug])
 
     class Meta:
-        verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
+        verbose_name = 'Категорія'
+        verbose_name_plural = 'Категорії'
 
 
 class ProductImage(models.Model):
@@ -66,7 +66,7 @@ class ProductImage(models.Model):
         processors=[ResizeToFill(600, 400)]
     )
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
-    is_main = models.BooleanField(verbose_name='Основное изображение', default=False)
+    is_main = models.BooleanField(verbose_name='Основне зображення', default=False)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if self.is_main:
@@ -81,29 +81,29 @@ class ProductImage(models.Model):
             ProductImage.objects.get(id=self.id)
         return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image_thumbnail}' width='70'>")
 
-    image_tag_thumbnail.short_description = 'Текущее изображение'
+    image_tag_thumbnail.short_description = 'Поточне зображення'
 
     def image_tag(self):
         if not self.image_thumbnail:
             ProductImage.objects.get(id=self.id)
         return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image_thumbnail}'>")
 
-    image_tag.short_description = 'Текущее изображение'
+    image_tag.short_description = 'Поточне зображення'
 
     class Meta:
-        verbose_name = 'Изображение товара'
-        verbose_name_plural = 'Изображения товара'
+        verbose_name = 'Зображення товару'
+        verbose_name_plural = 'Зображення товару'
 
 
 class Product(models.Model):
-    name = models.CharField(verbose_name='Название', max_length=255)
+    name = models.CharField(verbose_name='Назва', max_length=255)
     slug = models.SlugField(unique=True, verbose_name='Слаг (ЧПУ)')
-    description = models.TextField(verbose_name='Описание', null=True, blank=True)
-    quantity = models.IntegerField(verbose_name='Количество')
+    description = models.TextField(verbose_name='Опис', null=True, blank=True)
+    quantity = models.IntegerField(verbose_name='Кількість')
     price = models.DecimalField(verbose_name='Цена', max_digits=12, decimal_places=2, default=0)
-    categories = models.ManyToManyField(Category, verbose_name='Категории', through='ProductCategory', blank=True)
-    updated_at = models.DateTimeField(verbose_name='Дата изменения', auto_now=True)
-    created_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
+    categories = models.ManyToManyField(Category, verbose_name='Категорія', through='ProductCategory', blank=True)
+    updated_at = models.DateTimeField(verbose_name='Дата зміни', auto_now=True)
+    created_at = models.DateTimeField(verbose_name='Дата створення', auto_now_add=True)
 
     def images(self):
         return ProductImage.objects.filter(product=self.id)
@@ -127,13 +127,13 @@ class Product(models.Model):
 
     class Meta:
         verbose_name = 'Товар'
-        verbose_name_plural = 'Товары'
+        verbose_name_plural = 'Товари'
 
 
 class ProductCategory(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категорія')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
-    is_main = models.BooleanField(verbose_name='Основная категория', default=False)
+    is_main = models.BooleanField(verbose_name='Основная категорія', default=False)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if self.is_main:
@@ -144,5 +144,5 @@ class ProductCategory(models.Model):
         return ''
 
     class Meta:
-        verbose_name = 'Категория товара'
-        verbose_name_plural = 'Категории товара'
+        verbose_name = 'Категорія товару'
+        verbose_name_plural = 'Категорії товару'
