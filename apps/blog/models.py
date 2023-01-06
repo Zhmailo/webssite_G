@@ -23,7 +23,7 @@ class BlogCategory(models.Model):
 
     class Meta:
         verbose_name = 'Категория блога'
-        verbose_name_plural = 'Категории блога'
+        verbose_name_plural = 'Категорії блогу'
 
     def image_tag_thumbnail(self):
         if self.image:
@@ -75,4 +75,4 @@ class Article(models.Model):
 
     class Meta:
         verbose_name = 'Статья'
-        verbose_name_plural = 'Статьи'
+        verbose_name_plural = 'Статї'

@@ -19,7 +19,7 @@ class BlogCategoryAdmin(admin.ModelAdmin):
         url = reverse('admin:blog_article_changelist') + '?' + urlencode({'category__id__exact': instance.id})
         return format_html(f'<a href="{url}">Статей: {articles}</a>')
 
-    article_count.short_description = 'Количество статей'
+    article_count.short_description = 'Кількість статей'
 
 
 @admin.register(Article)
@@ -59,4 +59,4 @@ class ArticleAdmin(admin.ModelAdmin):
         result = ', '.join(data)
         return format_html(result)
 
-    tag_list.short_description = 'Теги'
+    tag_list.short_description = 'Тегі'

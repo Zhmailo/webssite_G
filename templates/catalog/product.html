@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+
+{% block meta_tags %}
+    {% include '_meta_tags.html' with meta_title=product.get_meta_title meta_description=product.meta_description meta_keyword=product.meta_keywords %}
+{% endblock %}
+
+
 {% block content %}
     <div class="product-view">
         <h3 class="my-header">{{ product.name }}</h3>
@@ -19,26 +25,26 @@
             </div>
 
             <div class="col-xs-12 col-md-6">
-                <p>Наличие:</p>
+                <p>Наявність:</p>
                 {% if product.quantity %}
                         {% if product.quantity >= 5 %}
-                            <b class="text-success">В наличии</b>
+                            <b class="text-success">В наявності</b>
                         {% else %}
-                            <b class="text-danger">Заканчивается</b>
+                            <b class="text-danger">Закінчюється</b>
                         {% endif %}
                     {% else %}
-                        <b class="text-danger">Нет наличии</b>
+                        <b class="text-danger">Нема наявності</b>
                     {% endif %}
 
                 <b class="text-danger product-price">{{ product.price }} грн.</b>
                 <form action="">
                     <div class="input-group mb-3">
                         <input type="number" min="1" step="1" max="100" value="1" class="form-control">
-                        <button class="btn btn-success" type="button" id="button-addon1">Приобрести</button>
+                        <button class="btn btn-success" type="button" id="button-addon1">Придбати</button>
                     </div>
                 </form>
                 <br>
-                <h4 class="text-center">Описание</h4>
+                <h4 class="text-center">Опис</h4>
                 <p>{{ product.description }}</p>
             </div>
 
