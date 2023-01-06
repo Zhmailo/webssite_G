@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'Статья',
-                'verbose_name_plural': 'Статьи',
+                'verbose_name_plural': 'Статї',
             },
         ),
     ]

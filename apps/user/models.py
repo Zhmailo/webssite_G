@@ -11,7 +11,7 @@ from config.settings import MEDIA_ROOT
 class User(AbstractUser):
     phone = PhoneNumberField(verbose_name='Телефон', blank=True, null=True)
     image = ProcessedImageField(
-        verbose_name='Изображение',
+        verbose_name='Зображення',
         upload_to='user/',
         null=True,
         blank=True
