@@ -22,7 +22,7 @@ class BlogCategory(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Категория блога'
+        verbose_name = 'Категорії блогу'
         verbose_name_plural = 'Категорії блогу'
 
     def image_tag_thumbnail(self):
