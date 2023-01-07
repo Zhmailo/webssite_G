@@ -23,5 +23,3 @@ def tag_search_view(request, tag_id):
     tag = Tag.objects.get(id=tag_id)
     articles = Article.objects.filter(tags=tag)
     return render(request, 'blog/tag_search.html', {'tag': tag, 'articles': articles})
-
-
