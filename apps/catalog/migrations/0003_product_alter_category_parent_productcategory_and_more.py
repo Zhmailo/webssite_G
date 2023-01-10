@@ -43,8 +43,8 @@ class Migration(migrations.Migration):
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='catalog.product', verbose_name='Товар')),
             ],
             options={
-                'verbose_name': 'Категория товара',
-                'verbose_name_plural': 'Категории товара',
+                'verbose_name': 'Категорія товару',
+                'verbose_name_plural': 'Категорії товару',
             },
         ),
         migrations.AddField(
