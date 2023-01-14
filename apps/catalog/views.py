@@ -8,6 +8,15 @@ class CategoryIndexView(generic.ListView):
     template_name = 'catalog/index.html'
     queryset = Category.objects.filter(parent=None)
 
+    def set_breadcrumbs(self):
+        breadcrumbs = {'current': 'Каталог'}
+        return breadcrumbs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({'breadcrumbs': self.set_breadcrumbs()})
+        return context
+
 
 class ProductsByCategoryView(generic.ListView):
     template_name = 'catalog/category.html'
