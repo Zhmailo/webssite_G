@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block meta_tags %}
-    {% include '_meta_tags.html' with meta_title='Блог' %}
+    {% include '_meta_tags.html' with meta_title='Категорії блога'%}
 {% endblock %}
+
+{% block breadcrumbs %}
+    {% include '_breadcrumbs.html' %}
+{% endblock %}
+
 {% block content %}
     <h1>Категорії</h1>
     <div class="row">
         {% for category in categories %}
             <div class="col-4 blog-item">
-                {% if category.image %}
-                   <a href="{% url 'blog_article_list' category_id=category.id  %}"><img class="img-thumbnail" src="{{ category.image.url }}" alt=""></a>
-                {% else %}
-                    <a href="{% url 'blog_article_list' category_id=category.id  %}"><img class="img-thumbnail" src="{% static 'img/no-image.png' %}" alt=""></a>
-                {% endif %}
-
-                <h4><a href="{% url 'blog_article_list' category_id=category.id %}">{{ category.name }}</a></h4>
+            {% if category.image %}
+                <a href="{% url 'blog_article_list' category_id=category.id %}"><img class= 'img-thumbnail' src="{{ category.image.url }}" alt=""></a>
+            {% else %}
+                <a href="{% url 'blog_article_list' category_id=category.id %}"><img class="img-thumbnail" src="{% static 'img/no-image.png' %}" alt=""></a>
+            {% endif %}
+            <h4><a href="{% url 'blog_article_list' category_id=category.id %}">{{ category.name }}</a></h4>
             </div>
         {% endfor %}
     </div>
