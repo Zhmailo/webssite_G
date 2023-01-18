@@ -30,9 +30,9 @@
 <div class="container">
     <div class="row main-header">
         <div class="col-6">
-            <img src="{% static 'img/webphoto (1).jpg' %}" alt="" id="logo">
+            <img src="{% static 'img/webphoto.jpg' %}" alt="" id="logo">
         </div>
-        <div class="col-6"><p class="header-text">Святкові знижки до 50%</p></div>
+{#        <div class="col-6"><p class="header-text">Святкові знижки до 50%</p></div>#}
             {% if request.user.is_authenticated %}
                 <p class="text-end">Привіт, {{ request.user.username }} (<a href="{% url 'logout' %}">Вийти</a>)</p>
             {% else %}
