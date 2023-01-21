@@ -34,9 +34,9 @@
         </div>
 {#        <div class="col-6"><p class="header-text">Святкові знижки до 50%</p></div>#}
             {% if request.user.is_authenticated %}
-                <p class="text-end">Привіт, {{ request.user.username }} (<a href="{% url 'logout' %}">Вийти</a>)</p>
+                <p class="text-end" style="color: white">Привіт, {{ request.user.username }} (<a href="{% url 'logout' %}">Вийти</a>)</p>
             {% else %}
-                <p class="text-end"><a href="{% url 'login' %}">Увійти</a>&nbsp;<a href="{% url 'register' %}">Зареєструватись</a></p>
+                <p class="text-end"><a style="color: white" href="{% url 'login' %}">Увійти</a>&nbsp;<a style="color: white" href="{% url 'register' %}">Зареєструватись</a></p>
             {% endif %}
     </div>
     <div class="row main-menu">
@@ -57,20 +57,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'catalog' %}">Магазин</a>
                         </li>
-{#                <li class="nav-item">{% if request.user.is_authenticated %}#}
-{#                    <a class="text-end">Привіт, {{ request.user.username }} (<a href="{% url 'logout' %}">Вийти</a>)</a>#}
-{#                {% else %}#}
-{#                    <a class="text-end"><a href="{% url 'login' %}">Увійти</a>&nbsp;<a href="{% url 'register' %}">Зареєструватись</a></a>#}
-{#                {% endif %}</li>#}
-{#                        <li>#}
-{#                            <a href="{{ 'user_login' }}" class="nav-link">Реєстрація</a>#}
-{#                        </li>#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="{% url 'user_login' %}">Реєстрація</a>#}
-{#                        </li>#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="{% url 'discounts' %}">Святкові знижки до 50%</a>#}
-{#                        </li>#}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'catalog' %}">Кошик</a>
+                        </li>
                     </ul>
                 </div>
             </div>

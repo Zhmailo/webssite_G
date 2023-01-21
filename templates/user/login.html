@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-3"></div>
         <div class="col-sm-12 col-md-6">
-            <h3 class="my-header">Увійдіть в аккаунт</h3>
+            <h3 style="color: white" class="my-header">Увійдіть в аккаунт</h3>
             {% if error %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}
@@ -15,11 +15,11 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label for="username" class="form-label">Логін</label>
+                    <label style="color: white" for="username" class="form-label">Логін</label>
                     <input type="text" class="form-control" id="username" name="username">
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Пароль</label>
+                    <label style="color: white" for="password" class="form-label">Пароль</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary">Увійти</button>
