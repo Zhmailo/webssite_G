@@ -40,11 +40,12 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'mptt',
     'treebeard',
-
+    'mathfilters',
     'apps.blog',
     'apps.user',
     'apps.catalog',
     'apps.main',
+    'apps.order',
 
 ]
 

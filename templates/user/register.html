@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-3"></div>
         <div class="col-sm-12 col-md-6">
-            <h3 class="my-header">Введіть данні для реєстрації</h3>
+            <h3 style="color: white" class="my-header">Введіть данні для реєстрації</h3>
             {% if error %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}
@@ -21,45 +21,45 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label for="username" class="form-label">Логін</label>
+                    <label style="color: white" for="username" class="form-label">Логін</label>
                     <input type="text" class="form-control" id="username" name="username" required>
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label">Аватар</label>
+                    <label style="color: white" for="image" class="form-label">Аватар</label>
                     <input type="file" class="form-control" id="image" name="image" required>
                 </div>
                 <div class="mb-3">
-                    <label for="first_name" class="form-label">Ім'я</label>
+                    <label style="color: white" for="first_name" class="form-label">Ім'я</label>
                     <input type="text" class="form-control" id="first_name" name="first_name" required>
                 </div>
                 <div class="mb-3">
-                    <label for="last_name" class="form-label">Призвище</label>
+                    <label style="color: white" for="last_name" class="form-label">Призвище</label>
                     <input type="text" class="form-control" id="last_name" name="last_name" required>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">E-mail</label>
+                    <label style="color: white" for="email" class="form-label">E-mail</label>
                     <input type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="mb-3">
-                    <label for="phone" class="form-label">Телефон</label>
+                    <label style="color: white" for="phone" class="form-label">Телефон</label>
                     <input type="text" class="form-control" id="phone" name="phone" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="about" class="form-label">Про себе</label>
+                    <label style="color: white" for="about" class="form-label">Про себе</label>
                     <textarea name="about" id="about" class="form-control" rows="3"></textarea>
                 </div>
 
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Пароль</label>
+                    <label style="color: white" for="password" class="form-label">Пароль</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="mb-3">
-                    <label for="password_confirm" class="form-label">Повторіть пароль</label>
+                    <label style="color: white" for="password_confirm" class="form-label">Повторіть пароль</label>
                     <input type="password" class="form-control" id="password_confirm" name="password_confirm">
                 </div>
-                <button type="submit" class="btn btn-primary">Зареєструватись</button>
+                <button style="color: white" type="submit" class="btn btn-primary">Зареєструватись</button>
             </form>
         </div>
     </div>

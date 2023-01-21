@@ -1,4 +1,11 @@
+body {
+    background-image: url("../img/bg.png");
+    background-attachment: fixed ;
+}
 
+.word-1{
+
+}
 #logo{
     max-width: 300px;
     width: 60%;
@@ -40,7 +47,7 @@
 }
 .blog-item:hover h4 a{
     top: 3px;
-    color: darkred;
+    color: #ffffff;
 }
 
 .author{
