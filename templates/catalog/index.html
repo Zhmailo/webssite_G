@@ -7,9 +7,9 @@
 
 {% block content %}
     <h1 style="color: white">Категорії</h1>
-    <div class="row">
+    <div style="color: white" class="row">
         {% for category in object_list %}
-            <div class="col-4 blog-item">
+            <div style="color: white" class="col-4 blog-item">
                 <a href="{{ category.get_absolute_url }}">
                     {% if category.image %}
                         <img class="img-thumbnail" src="{{ category.image.url }}" alt="">

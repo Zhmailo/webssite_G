@@ -1,12 +1,12 @@
 {% load mptt_tags %}
 
 <div id="main-menu">
-    <h3 class="my-header">{{ category.name }}</h3>
+    <h3 class="my-header" style="color: white">{{ category.name }}</h3>
     <div>
-        <ul class="menu-start">
+        <ul class="menu-start" style="color: white">
             {% recursetree categories %}
                 <li>
-                    <a href="{{ node.get_absolute_url }}">{{ node.name }}</a>
+                    <a style="color: white" href="{{ node.get_absolute_url }}">{{ node.name }}</a>
                     {% if not node.is_leaf_node %}
                         <ul class="children">
                             {{ children }}

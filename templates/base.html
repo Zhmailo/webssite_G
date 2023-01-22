@@ -36,7 +36,7 @@
             {% if request.user.is_authenticated %}
                 <p class="text-end" style="color: white">Привіт, {{ request.user.username }} (<a href="{% url 'logout' %}">Вийти</a>)</p>
             {% else %}
-                <p class="text-end"><a style="color: white" href="{% url 'login' %}">Увійти</a>&nbsp;<a style="color: white" href="{% url 'register' %}">Зареєструватись</a></p>
+                <p class="text-end"><a style="color: white" href="{% url 'login' %}">Увійти</a>&nbsp;<a style="color: white"href="{% url 'register' %}">Зареєструватись</a></p>
             {% endif %}
     </div>
     <div class="row main-menu">
@@ -56,9 +56,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'catalog' %}">Магазин</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'catalog' %}">Кошик</a>
                         </li>
                     </ul>
                 </div>

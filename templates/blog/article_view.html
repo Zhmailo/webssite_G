@@ -8,13 +8,13 @@
     {% include '_breadcrumbs.html' %}
 {% endblock %}
 {% block content %}
-    <h2>{{ article.title }}</h2>
+    <h2 style="color: white">{{ article.title }}</h2>
     <img class="img-thumbnail" src="{{ article.image.url }}" alt="">
-<p>{{ article.text }}</p>
-<p>
+<p style="color: white">{{ article.text }}</p>
+<p style="color: white">
     {% for tag in article.tags.all %}
-        <a href="">#{{ tag.name }}</a>&nbsp;
-        <a href="{% url 'tag_search_view' tag_id=tag.id %}">#{{ tag.name }}</a>&nbsp;
+        <a style="color: white" href="">#{{ tag.name }}</a>&nbsp;
+        <a style="color: white" href="{% url 'tag_search_view' tag_id=tag.id %}">#{{ tag.name }}</a>&nbsp;
     {% endfor %}
 
 </p>
@@ -22,13 +22,13 @@
 
 
     {% if article.user %}
-        <p><b>Автор поста: </b>{{ article.user.first_name }} {{ article.user.last_name }}</p>
+        <p style="color: white"><b>Автор поста: </b>{{ article.user.first_name }} {{ article.user.last_name }}</p>
         {% if article.user.image %}
             <img class='img-thumbnail' src="{{ article.user.image_thumbnail.url }}" alt="">
         {% endif %}
 
     {% endif %}
-<p style="text-align: right">
+<p style="color: white">
     Дата: <b>{{ article.publish_date }}</b>
     Категория: <b>{{ category.name }}</b>
 </p>
@@ -36,8 +36,8 @@
 
 
 {% if article.user %}
-        <div class="text-end">
-            <div class="author">
+        <div style="color: white" class="text-end">
+            <div style="color: white" class="author">
                 {% if article.user.image %}
                     <span class="avatar">
                         <img src="{{ article.user.image_thumbnail.url }}" alt="">
