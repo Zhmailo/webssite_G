@@ -29,8 +29,7 @@ def add_to_cart(request):
         else:
             form.save()
 
-
-    return render(request, 'order/cart_view.html', {'cart': get_cart_data(request.user)})
+    return render(request, 'order/cart_view.html', {'cart': get_cart_data(request.user)})  #
 
 
 @login_required
