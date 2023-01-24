@@ -30,7 +30,6 @@ class ProductsByCategoryView(generic.ListView):
 
     def set_breadcrumbs(self):
         breadcrumbs = {reverse('catalog'): "Каталог"}
-
         category = self.category
         categories = []
         parent = category.parent
@@ -39,7 +38,6 @@ class ProductsByCategoryView(generic.ListView):
             parent = parent.parent
         for key, value in categories[::-1]:
             breadcrumbs.update({key: value})
-
         breadcrumbs.update({'current': self.category.name})
         return breadcrumbs
 
@@ -57,7 +55,6 @@ class ProductDetailView(generic.DetailView):
 
     def set_breadcrumbs(self):
         breadcrumbs = {reverse('catalog'): "Каталог"}
-
         category = self.object.main_category()
         if category:
             categories = [(reverse('categories', args=[category.slug]), category.name)]
@@ -67,7 +64,6 @@ class ProductDetailView(generic.DetailView):
                 parent = parent.parent
             for key, value in categories[::-1]:
                 breadcrumbs.update({key: value})
-
         breadcrumbs.update({'current': self.object.name})
         return breadcrumbs
 

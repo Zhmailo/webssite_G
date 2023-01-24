@@ -29,9 +29,19 @@ def add_to_cart(request):
         else:
             form.save()
 
-    return render(request, 'order/cart_view.html', {'cart': get_cart_data(request.user)})  #
+        return render(
+            request,
+            'order/added.html',
+            {"product": cd['product'], "cart": get_cart_data(cd['user'])}
+        )
 
 
 @login_required
 def cart_view(request):
-    return render(request, 'order/cart_view.html', {'cart': get_cart_data(request.user)})
+    breadcrumbs = {'current': 'Кошик'}
+    return render(
+        request,
+        'order/cart_view.html',
+        {"cart": get_cart_data(request.user), 'breadcrumbs': breadcrumbs}
+
+    )

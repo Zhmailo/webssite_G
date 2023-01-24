@@ -6,7 +6,6 @@ from apps.blog.models import BlogCategory, Article, Tag
 def blog_category_list(request):
     blog_categories = BlogCategory.objects.all()
     breadcrumbs = {'current': 'Блог'}
-
     return render(
         request,
         'blog/category_list.html',
@@ -16,8 +15,9 @@ def blog_category_list(request):
 def article_list(request, category_id):
     articles = Article.objects.filter(category_id=category_id)
     category = BlogCategory.objects.get(id=category_id)
-    breadcrumbs = {reverse('blog_category_list'): "Блог", "current" : category.name}
-    return render(request, 'blog/article_list.html', {'articles': articles, 'category': category, 'breadcrumbs': breadcrumbs})
+    breadcrumbs = {reverse('blog_category_list'): "Блог", "current": category.name}
+    return render(request, 'blog/article_list.html',
+                  {'articles': articles, 'category': category, 'breadcrumbs': breadcrumbs})
 
 
 def article_view(request, category_id, article_id):
@@ -42,5 +42,5 @@ def tag_search_view(request, tag_id):
         'current': tag.name
     }
     return render(request,
-                  'blog/tag_article.html',
+                  'blog/tag_search.html',
                   {'tag': tag, 'articles': articles, 'breadcrumbs': breadcrumbs})
