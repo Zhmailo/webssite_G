@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block breadcrambs %}
+    {% include '_breadcrumbs.html' %}
+{% endblock %}
 
 {% block meta_tags %}
     {% include '_meta_tags.html' with meta_title='Каталог магазина' %}
 {% endblock %}
+
 
 {% block content %}
     <h1 style="color: white">Категорії</h1>

@@ -1,4 +1,7 @@
 {% load mptt_tags %}
+{% block breadcrambs %}
+    {% include '_breadcrumbs.html' %}
+{% endblock %}
 
 <div id="main-menu">
     <h3 class="my-header" style="color: white">{{ category.name }}</h3>
