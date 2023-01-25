@@ -1,5 +1,11 @@
 {% load mptt_tags %}
+{% block meta_tags %}
+    {% include '_meta_tags.html' with meta_title='Магазин' %}
+{% endblock %}
 
+{% block breadcrumbs %}
+    {% include '_breadcrumbs.html' %}
+{% endblock %}
 <div id="main-menu">
     <h3 class="my-header" style="color: white">{{ category.name }}</h3>
     <div>

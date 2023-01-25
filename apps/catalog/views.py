@@ -9,7 +9,7 @@ class CategoryIndexView(generic.ListView):
     queryset = Category.objects.filter(parent=None)
 
     def set_breadcrumbs(self):
-        breadcrumbs = {'current': 'Каталог'}
+        breadcrumbs = {'current': 'Магазин'}
         return breadcrumbs
 
     def get_context_data(self, **kwargs):
@@ -29,7 +29,7 @@ class ProductsByCategoryView(generic.ListView):
         return queryset
 
     def set_breadcrumbs(self):
-        breadcrumbs = {reverse('catalog'): "Каталог"}
+        breadcrumbs = {reverse('catalog'): "Магазин"}
 
         category = self.category
         categories = []
@@ -56,7 +56,7 @@ class ProductDetailView(generic.DetailView):
     template_name = 'catalog/product.html'
 
     def set_breadcrumbs(self):
-        breadcrumbs = {reverse('catalog'): "Каталог"}
+        breadcrumbs = {reverse('catalog'): "Магазин"}
 
         category = self.object.main_category()
         if category:
