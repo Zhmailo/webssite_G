@@ -41,6 +41,7 @@
 
                 <b style="color: white" class="text-danger product-price">{{ product.price }} грн.</b>
                 <form style="color: white" action="{% url 'add_to_cart' %}">
+                    {% csrf_token %}
                     <div style="color: white" class="input-group mb-3">
                         <input style="color: white" type="hidden" name="product" value="{{ product.id }}">
                         <input style="color: white" id="quantity" name="quantity" type="number" min="1" step="1" max="100" value="1" class="form-control">
