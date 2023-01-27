@@ -29,7 +29,7 @@
             <td style="color: white">{{ row.product.price }}</td>
             <td style="color: white">{{ row.product.price|mul:row.quantity }} грн.</td>
             <td style="color: white">
-                <button style="color: white" class="btn btn-danger">Видалити</button>
+                <a href="{% url 'delete_from_cart' product_id=row.product_id %}" style="color: white" class="btn btn-danger">Видалити</a>
             </td>
         </tr>
     {% endfor %}
