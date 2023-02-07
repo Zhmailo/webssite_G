@@ -10,8 +10,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1 style="color: white">Товари</h1>
-    <div style="color: white" class="row">
+    <h1>Товари</h1>
+    <div class="row">
         {% for category in object_list %}
             <div style="color: white" class="col-4 blog-item">
                 <a href="{{ category.get_absolute_url }}">

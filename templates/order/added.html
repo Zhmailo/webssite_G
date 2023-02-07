@@ -7,6 +7,6 @@
     {% include '_breadcrumbs.html' %}
 {% endblock %}
 {% block content %}
-    <h3 style="color: white" class="my-header">Додано!</h3>
-    <p style="color: white">Товар <a href="{% url 'product' slug=product.slug %}">{{ product.name }}</a> додано в кошик</p>
+    <h3 class="my-header">Додано!</h3>
+    <p>Товар <a href="{% url 'product' slug=product.slug %}">{{ product.name }}</a> додано в кошик</p>
 {% endblock %}
