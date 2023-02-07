@@ -8,34 +8,34 @@
 <table class="table">
     <thead>
     <tr>
-        <th scope="col" style="color: white">Фото</th>
-        <th scope="col" style="color: white">Товар</th>
-        <th scope="col" style="color: white">Кількість</th>
-        <th scope="col" style="color: white">Ціна</th>
-        <th scope="col" style="color: white">Сумма</th>
-        <th scope="col" style="color: white">Видалити</th>
+        <th scope="col">Фото</th>
+        <th scope="col">Товар</th>
+        <th scope="col">Кількість</th>
+        <th scope="col">Ціна</th>
+        <th scope="col">Сумма</th>
+        <th scope="col">Видалити</th>
     </tr>
     </thead>
     <tbody>
     {% for row in cart.cart %}
         <tr>
             <td>
-                <a style="color: white" href="{% url 'product' slug=row.product.slug %}">
-                    <img style="color: white" class="img-thumbnail" width="70" src="{{ row.product.main_image.image_thumbnail.url }}" alt="">
+                <a href="{% url 'product' slug=row.product.slug %}">
+                    <img class="img-thumbnail" width="70" src="{{ row.product.main_image.image_thumbnail.url }}" alt="">
                 </a>
             </td>
             <td><a href="{% url 'product' slug=row.product.slug %}">{{ row.product.name }}</a></td>
-            <td style="color: white">{{ row.quantity }}</td>
-            <td style="color: white">{{ row.product.price }}</td>
-            <td style="color: white">{{ row.product.price|mul:row.quantity }} грн.</td>
-            <td style="color: white">
-                <a href="{% url 'delete_from_cart' product_id=row.product_id %}" style="color: white" class="btn btn-danger">Видалити</a>
+            <td>{{ row.quantity }}</td>
+            <td>{{ row.product.price }}</td>
+            <td>{{ row.product.price|mul:row.quantity }} грн.</td>
+            <td>
+                <a href="{% url 'delete_from_cart' product_id=row.product_id %}" class="btn btn-danger">Видалити</a>
             </td>
         </tr>
     {% endfor %}
     <tr>
-        <td colspan="4" style="color: white" class="text-end"><b>В сумі:</b></td>
-        <td colspan="2" style="color: white">{{ cart.total }} грн.</td>
+        <td colspan="4" class="text-end"><b>В сумі:</b></td>
+        <td colspan="2" >{{ cart.total }} грн.</td>
     </tr>
     </tbody>
 </table>

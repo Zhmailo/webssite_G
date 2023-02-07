@@ -9,10 +9,10 @@
 {% endblock %}
 
 {% block content %}
-    <h1 style="color: white">Статї</h1>
-    <div style="color: white" class="row">
+    <h1>Статї</h1>
+    <div class="row">
         {% for article in articles %}
-            <div style="color: white" class="col-4 blog-item">
+            <div class="col-4 blog-item">
                 {% if article.image %}
                   <a href="{% url 'blog_article_view' article_id=article.id category_id=article.category.id  %}"><img class="img-thumbnail" src="{{ article.image_thumbnail.url }}" alt=""></a>
                 {% else %}

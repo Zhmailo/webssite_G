@@ -1,7 +1,7 @@
-body {
-    background-image: url("../img/bg.png");
-    background-attachment: fixed ;
-}
+/*body {*/
+/*    background-image: url("../img/bg.png");*/
+/*    background-attachment: fixed ;*/
+/*}*/
 
 #logo{
     max-width: 200px;
@@ -20,7 +20,7 @@ body {
 
 .header-text{
     color: #000000;
-    background-color: #ffffff;
+    background-color: #000000;
     font-size: 28px;
     font-style: italic;
     text-align: right;
@@ -45,7 +45,7 @@ body {
 }
 .blog-item:hover h4 a{
     top: 3px;
-    color: #ffffff;
+    color: #000000;
 }
 
 .author{
@@ -80,7 +80,7 @@ body {
 }
 
 .product{
-    box-shadow: 0 0 4px #ccc;
+    box-shadow: 0 0 4px #000000;
     transition: all .15s linear;
 }
 
