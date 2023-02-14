@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('publish_date', models.DateTimeField(verbose_name='Дата публикации')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Дата изменения')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.blogcategory', verbose_name='Категорії')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.blogcategory', verbose_name='Цікаві пропозиції')),
             ],
             options={
                 'verbose_name': 'Статья',

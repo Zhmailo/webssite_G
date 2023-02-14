@@ -23,8 +23,8 @@ class BlogCategory(MetaTagMixin):
         return self.name
 
     class Meta:
-        verbose_name = 'Категорії блогу'
-        verbose_name_plural = 'Категорії блогу'
+        verbose_name = 'Цікаві пропозиції'
+        verbose_name_plural = 'Цікаві пропозиції'
 
     def image_tag_thumbnail(self):
         if self.image:
@@ -51,7 +51,7 @@ class Tag(models.Model):
 
 
 class Article(MetaTagMixin):
-    category = models.ForeignKey(to=BlogCategory, verbose_name='Категорія', on_delete=models.CASCADE)
+    category = models.ForeignKey(to=BlogCategory, verbose_name='Пропозиція', on_delete=models.CASCADE)
     user = models.ForeignKey(User, verbose_name='Автор', on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField(verbose_name='Заголовок', max_length=255)
     text_preview = models.TextField(verbose_name='Текст-превью', null=True, blank=True)
@@ -80,5 +80,5 @@ class Article(MetaTagMixin):
         return self.title
 
     class Meta:
-        verbose_name = 'Статья'
-        verbose_name_plural = 'Статї'
+        verbose_name = 'Пропозиція'
+        verbose_name_plural = 'Пропозиції'

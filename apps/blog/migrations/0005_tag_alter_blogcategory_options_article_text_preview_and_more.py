@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='blogcategory',
-            options={'verbose_name': 'Категория блога', 'verbose_name_plural': 'Категорії блогу'},
+            options={'verbose_name': 'Категория блога', 'verbose_name_plural': 'Цікаві пропозиції блогу'},
         ),
         migrations.AddField(
             model_name='article',
