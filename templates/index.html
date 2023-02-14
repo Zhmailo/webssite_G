@@ -1,7 +1,80 @@
 {% extends 'base.html' %}
+
 {% block meta_tags %}
+<div class="b-example-divider b-example-vr"></div>
+
+<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+    </a>
+    <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+          Ноутбуки та комп’ютери
+        </button>
+        <div class="collapse" id="home-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="https://rozetka.com.ua/ua/notebooks/c80004/" class="link-dark d-inline-flex text-decoration-none rounded">Ноутбуки</a></li>
+            <li><a href="https://hard.rozetka.com.ua/ua/computers/c80095/" class="link-dark d-inline-flex text-decoration-none rounded">Комп'ютери, неттопи, моноблоки</a></li>
+            <li><a href="https://rozetka.com.ua/ua/game-zone/c80261/" class="link-dark d-inline-flex text-decoration-none rounded">Gaming</a></li>
+            <li><a href="https://rozetka.com.ua/ua/tablets/c130309/" class="link-dark d-inline-flex text-decoration-none rounded">Планшети</a></li>
+            <li><a href="https://rozetka.com.ua/ua/tv-cables/c80073/" class="link-dark d-inline-flex text-decoration-none rounded">Кабелі та перехідники</a></li>
+            <li><a href="https://hard.rozetka.com.ua/ua/" class="link-dark d-inline-flex text-decoration-none rounded">Комп'ютерні комплектуючі</a></li>
+            <li><a href="https://rozetka.com.ua/ua/network-equipment/c80111/" class="link-dark d-inline-flex text-decoration-none rounded">Мережеве обладнання</a></li>
+            <li><a href="https://rozetka.com.ua/ua/naushniki-i-aksessuari/c4660594/" class="link-dark d-inline-flex text-decoration-none rounded">Навушники та аксесуари</a></li>
+            <li><a href="https://hard.rozetka.com.ua/ua/keybords-mice/c80255/" class="link-dark d-inline-flex text-decoration-none rounded">Клавіатури та миші</a></li>
+            <li><a href="https://rozetka.com.ua/ua/computers-notebooks-accessories/c80256/" class="link-dark d-inline-flex text-decoration-none rounded">Аксесуари для електроніки</a></li>
+            <li><a href="https://rozetka.com.ua/ua/office-equipment/c80254/" class="link-dark d-inline-flex text-decoration-none rounded">Офісна техніка</a></li>
+            <li><a href="https://hard.rozetka.com.ua/ua/speakers/c80100/" class="link-dark d-inline-flex text-decoration-none rounded">Акустичні системи</a></li>
+            <li><a href="https://soft.rozetka.com.ua/ua/" class="link-dark d-inline-flex text-decoration-none rounded">Програмне забезпечення</a></li>
+            <li><a href="https://rozetka.com.ua/ua/grafic-tablets/c83199/" class="link-dark d-inline-flex text-decoration-none rounded">Графічні планшети</a></li>
+            <li><a href="https://rozetka.com.ua/ua/microphones/c164743/" class="link-dark d-inline-flex text-decoration-none rounded">Мікрофони</a></li>
+            <li><a href="https://rozetka.com.ua/ua/servernoe-oborudovanie/c4630100/" class="link-dark d-inline-flex text-decoration-none rounded">Серверне обладнання</a></li>
+            <li><a href="https://rozetka.com.ua/ua/interaktivnoe-oborudovanie/c4643064/" class="link-dark d-inline-flex text-decoration-none rounded">Інтерактивне обладнання</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+          Побутова техніка
+        </button>
+        <div class="collapse" id="dashboard-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="https://bt.rozetka.com.ua/ua/bigbt/c80080/" class="link-dark d-inline-flex text-decoration-none rounded">Велика побутова техніка</a></li>
+            <li><a href="https://bt.rozetka.com.ua/ua/builtin/c80078/" class="link-dark d-inline-flex text-decoration-none rounded">Updates</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+          Смартфони, ТВ і електроніка
+        </button>
+        <div class="collapse" id="orders-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          </ul>
+        </div>
+      </li>
+
+      <li class="border-top my-3"></li>
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+          Профіль Користувача
+        </button>
+        <div class="collapse" id="account-collapse">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Новий...</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Профіль</a></li>
+            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Налаштування</a></li>
+            <li><a href="{% url 'logout' %}" class="link-dark d-inline-flex text-decoration-none rounded">Вийти з акаунту</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+</div>
+
     {% include '_meta_tags.html' with meta_title='Головна' %}
 {% endblock %}
+
 
 {% block breadcrumbs %}
     {% include '_breadcrumbs.html' %}
@@ -10,18 +83,16 @@
     {% include '_toasts.html' %}
 {% endblock %}
 
-{% block content %}
 
-    <h1 class="word-1">Привіт! Ви на головній сторінці GStore!</h1>
-{#    <style>#}
-{#        body {#}
-{#            background-image: url("../img/bg.png");#}
-{#        }#}
-{#    </style>#}
-    <h3 class="word-1">У цьому магазині ви зможете замовити налаштування офісу та обладнання. А також багато свіжих новин про світ IT і знаходити безліч статей про різні мови програмування. Сподіваюся вам сподобається!</h3>
+{% block content %}
+    <main class="b-example-divider b-example-vr">
+        <h1 class="word-1">Привіт! Ви на головній сторінці GStore!</h1>
+        <h3 class="word-1">У цьому магазині ви зможете замовити налаштування офісу та обладнання. А також багато свіжих новин про світ IT і знаходити безліч статей про різні мови програмування. Сподіваюся вам сподобається!</h3></main>
 {% endblock %}
 <footer class="footer mt-auto py-3 bg-light">
   <div class="container">
     <span class="text-muted">Place sticky footer content here.</span>
   </div>
 </footer>
+
+
