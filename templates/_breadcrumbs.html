@@ -1,6 +1,6 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li style="color: white" class="breadcrumb-item"><a href="{% url 'index' %}">Головна</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'index' %}">Головна</a></li>
         {% for key, value in breadcrumbs.items %}
             {% if key == 'current' %}
                 <li class="breadcrumb-item active" aria-current="page">{{ value }}</li>

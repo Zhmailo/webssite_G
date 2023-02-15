@@ -1,8 +1,12 @@
 {% load static %}
-<div>
 {% block meta_tags %}
-    {% include '_meta_tags.html' with meta_title='Продукт' %}
+    {% include '_meta_tags.html' with meta_title=category.get_meta_title meta_description=category.meta_description meta_keyword=category.meta_keywords %}
 {% endblock %}
+
+{% block breadcumbs %}
+    {% include '_breadcrumbs.html' %}
+{% endblock %}
+<div>
 
     <h3 class="my-header">{{ category.name }}</h3>
     <div class="row">
@@ -15,7 +19,7 @@
                         {% else %}
                             <img src="{% static 'img/no-image.png' %}" alt="">
                         {% endif %}
-                        <b class="text-danger product-price">{{ item.price }} гривень</b>
+                        <b class="text-danger product-price">{{ item.price }} грн.</b>
                         <p class="product-name">{{ item.name }}</p>
                     </a>
                 </div>
