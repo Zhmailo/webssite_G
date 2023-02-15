@@ -6,16 +6,15 @@ from django.urls import reverse
 from pilkit.processors import ResizeToFill
 
 from apps.main.mixins import MetaTagMixin
-from apps.user.models import User
 from config.settings import MEDIA_ROOT
 
 
 class Category(MPTTModel, MetaTagMixin):
-    name = models.CharField(verbose_name='Название', max_length=255)
+    name = models.CharField(verbose_name='Назва', max_length=255)
     slug = models.SlugField(unique=True, verbose_name='Слаг (ЧПУ)')
-    description = models.TextField(verbose_name='Описание', null=True, blank=True)
+    description = models.TextField(verbose_name='Опис', null=True, blank=True)
     image = ProcessedImageField(
-        verbose_name='Изображение',
+        verbose_name='Зображення',
         upload_to='catalog/category/',
         processors=[ResizeToFill(600, 400)],
         null=True,
@@ -34,13 +33,13 @@ class Category(MPTTModel, MetaTagMixin):
         if self.image:
             return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image}' width='70'>")
 
-    image_tag_thumbnail.short_description = 'Изображения'
+    image_tag_thumbnail.short_description = 'Зображення'
 
     def image_tag(self):
         if self.image:
             return mark_safe(f"<img src='/{MEDIA_ROOT}{self.image}'>")
 
-    image_tag.short_description = 'Изображения'
+    image_tag.short_description = 'Зображення'
 
     def __str__(self):
         full_path = [self.name]
@@ -60,7 +59,7 @@ class Category(MPTTModel, MetaTagMixin):
 
 class ProductImage(models.Model):
     image = ProcessedImageField(
-        verbose_name='Изображение',
+        verbose_name='Зображення',
         upload_to='catalog/product/',
     )
     image_thumbnail = ImageSpecField(
@@ -102,10 +101,8 @@ class Product(MetaTagMixin):
     slug = models.SlugField(unique=True, verbose_name='Слаг (ЧПУ)')
     description = models.TextField(verbose_name='Опис', null=True, blank=True)
     quantity = models.IntegerField(verbose_name='Кількість')
-    price = models.DecimalField(verbose_name='Цена', max_digits=12, decimal_places=2, default=0)
-    categories = models.ManyToManyField(Category, verbose_name='Категорія', through='ProductCategory', blank=True)
-    is_checked = models.BooleanField(verbose_name="Перевірено", default=False)
-    user = models.ForeignKey(User, verbose_name="Користувач", null=True, blank=True, on_delete=models.SET_NULL)
+    price = models.DecimalField(verbose_name='Ціна', max_digits=12, decimal_places=2, default=0)
+    categories = models.ManyToManyField(Category, verbose_name='Категорії', through='ProductCategory', blank=True)
     updated_at = models.DateTimeField(verbose_name='Дата зміни', auto_now=True)
     created_at = models.DateTimeField(verbose_name='Дата створення', auto_now_add=True)
 
@@ -141,9 +138,9 @@ class Product(MetaTagMixin):
 
 
 class ProductCategory(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категорія')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар')
-    is_main = models.BooleanField(verbose_name='Основная категорія', default=False)
+    is_main = models.BooleanField(verbose_name='Основная категория', default=False)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if self.is_main:
