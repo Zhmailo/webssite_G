@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+
+{% block meta_tags %}
+    {% include '_meta_tags.html' with meta_title='Про нас' %}
+{% endblock %}
+
+{% block breadcrumbs %}
+    {% include '_breadcrumbs.html' %}
+{% endblock %}
+{% block toasts %}
+    {% include '_toasts.html' %}
+{% endblock %}
+
+{% block content %}
+   <div class="modal modal-tour position-static d-block bg-secondary py-5" tabindex="-1" role="dialog" id="modalTour">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-body p-5">
+        <h2 class="fw-bold mb-0">Ми в соціальних мережах</h2>
+
+        <ul class="d-grid gap-4 my-5 list-unstyled">
+          <li class="d-flex gap-4">
+            <svg class="bi text-muted flex-shrink-0" width="48" height="48"><use xlink:href="#grid-fill"></use></svg>
+            <div>
+              <h5 class="mb-0">GitHub</h5>
+              Наш <a href="https://github.com/Zhmailo/GStore">Github</a>
+            </div>
+          </li>
+          <li class="d-flex gap-4">
+            <svg class="bi text-warning flex-shrink-0" width="48" height="48"><use xlink:href="#bookmark-star"></use></svg>
+            <div>
+              <h5 class="mb-0">Instagram</h5>
+              Наш <a href="https://www.instagram.com/gstor_shop/">Instagram
+            </div>
+          </li>
+          <li class="d-flex gap-4">
+            <svg class="bi text-warning flex-shrink-0" width="48" height="48"><use xlink:href="#bookmark-star"></use></svg>
+            <div>
+              <h5 class="mb-0">Telegram</h5>
+                Наш <a href="https://instagram.com/haacbkcedr?igshid=ZDdkNTZiNTM=">Телеграм бот</a>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+        <a class="nav-link" href="/"><h3>На головну</h3></a>
+    </div>
+  </div>
+</div>
+{% endblock %}
