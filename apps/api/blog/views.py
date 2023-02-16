@@ -2,6 +2,7 @@ from rest_framework import generics, permissions
 from apps.api.blog.serializers import ArticleSerializer
 from apps.blog.models import Article
 
+
 class ArticleListView(generics.ListAPIView):
     serializer_class = ArticleSerializer
 
@@ -16,8 +17,8 @@ class ArticleListView(generics.ListAPIView):
         if user:
             queryset = queryset.filter(user=user)
 
-
         return queryset
+
 
 class ArticleDetailView(generics.RetrieveAPIView):
     serializer_class = ArticleSerializer
