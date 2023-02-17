@@ -33,7 +33,7 @@ class ArticleAdmin(admin.ModelAdmin):
         url = reverse('admin:blog_blogcategory_change', args=[instance.category_id])
         return format_html(f"<a href='{url}'>{instance.category.name}</a>")
 
-    category_link.short_description = 'Цікаві пропозиції'
+    category_link.short_description = 'Блог'
 
     def user_link(self, instance):
         if instance.user:
