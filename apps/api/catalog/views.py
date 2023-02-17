@@ -7,8 +7,6 @@ from apps.api.catalog.serializers import CategorySerializer, ProductReadSerializ
 class ProductListView(generics.ListAPIView):
     serializer_class = ProductReadSerializer
 
-    # queryset = Product.objects.filter(is_checked=True)
-
     def get_queryset(self):
         queryset = Product.objects.filter(is_checked=True)
 
