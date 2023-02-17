@@ -23,8 +23,8 @@ class BlogCategory(MetaTagMixin):
         return self.name
 
     class Meta:
-        verbose_name = 'Цікаві пропозиції'
-        verbose_name_plural = 'Цікаві пропозиції'
+        verbose_name = 'Блог'
+        verbose_name_plural = 'Блог'
 
     def image_tag_thumbnail(self):
         if self.image:
