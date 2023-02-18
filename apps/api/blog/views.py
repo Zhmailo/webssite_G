@@ -32,6 +32,23 @@ class ArticleViewSet(viewsets.ModelViewSet):
             return [permission() for permission in [permissions.IsAdminUser]]
         return [permission() for permission in [permissions.AllowAny]]
 
+    @staticmethod
+    def check_tags(tags):
+        tags_list = []
+        for item in tags:
+            tag = Tag.objects.filter(name=item).first()
+            if not tag:
+                tag = Tag.objects.create(name=item)
+            tags_list.append(tag)
+        return tags_list
+
+    def save_model(self, serializer):
+        serializer.is_valid(raise_exception=True)
+        tags = serializer.validated_data.get('tags')
+        article = serializer.save(user=self.request.user, tags=self.check_tags(tags))
+        read_serializer = self.serializer_class(article, context={'request': self.request})
+        return read_serializer
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.id.valid(raise_exaption=True)
@@ -45,3 +62,9 @@ class ArticleViewSet(viewsets.ModelViewSet):
         read_serializer = self.serializer_class(article, context={'request': request})
 
         return Response(read_serializer.data, status=status.HTTP_201_CREATED)
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data)
+        read_serializer = self.save_model(serializer)
+        return Response(read_serializer.data, status=status.HTTP_200_OK)
