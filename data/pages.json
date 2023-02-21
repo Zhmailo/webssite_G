@@ -1,0 +1,18 @@
+[
+  {
+    "model": "main.page",
+    "pk": 1,
+    "fields": {
+      "name": "Про нас",
+      "slug": "about"
+    }
+  },
+  {
+    "model": "main.page",
+    "pk": 2,
+    "fields": {
+      "name": "Оплата та доставка",
+      "slug": "payment-and-shipping"
+    }
+  }
+]
