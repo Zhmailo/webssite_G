@@ -1,0 +1,15 @@
+[
+  {
+    "model": "main.page",
+    "pk": 3,
+    "fields": {
+      "name": "Контакти",
+      "slug": "contacts",
+      "text": "Ми у Києві",
+      "meta_title": "Контакти",
+      "meta_description": "Контакти",
+      "meta_keywords": "Контакти",
+      "is_active": false
+    }
+  }
+]
