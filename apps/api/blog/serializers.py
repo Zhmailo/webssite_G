@@ -22,6 +22,7 @@ class ArticleWriteSerializer(serializers.ModelSerializer):
         model = Article
         fields = (
             'id',
+            'images',
             'category',
             'user',
             'image',
@@ -33,9 +34,21 @@ class ArticleWriteSerializer(serializers.ModelSerializer):
         )
 
 
-class ArticleReadSerializer(serializers.ModelSerializer):  #
+class ProductImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = (
+            'id',
+            'images',
+            'product',
+            'is_main'
+        )
+
+
+class ArticleReadSerializer(serializers.ModelSerializer):
     category = BlogCategorySerializer()
     tags = TagSerializer(many=True)
+    images = ProductImageSerializer(many=True)
 
     class Meta:
         model = Article
@@ -44,6 +57,8 @@ class ArticleReadSerializer(serializers.ModelSerializer):  #
             'category',
             'user',
             'image',
+            'images',
+            'main_image',
             'title',
             'text_preview',
             'text',
