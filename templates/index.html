@@ -85,9 +85,17 @@
 
 
 {% block content %}
-    <main class="b-example-divider b-example-vr">
-        <h1 class="word-1">Привіт! Ви на головній сторінці GStore!</h1>
-        <h3 class="word-1">У цьому магазині ви зможете замовити налаштування офісу та обладнання. А також багато свіжих новин про світ IT і знаходити безліч статей про різні мови програмування. Сподіваюся вам сподобається!</h3></main>
+{#    <main class="b-example-divider b-example-vr">#}
+{#        <h1 class="word-1">Привіт! Ви на головній сторінці GStore!</h1>#}
+{#        <h3 class="word-1">У цьому магазині ви зможете замовити налаштування офісу та обладнання. А також багато свіжих новин про світ IT і знаходити безліч статей про різні мови програмування. Сподіваюся вам сподобається!</h3></main>#}
+
+    {{ page.text | safe }}
+    {% for product_set in product_sets %}
+        {% include 'main/_product_set.html' %}
+    {% endfor %}
+{#    {% for product_set in product_sets %}#}
+{#        {% include 'main/_product_set.html' %}#}
+{#    {% endfor %}#}
 {% endblock %}
 <footer class="footer mt-auto py-3 bg-light">
   <div class="container">
