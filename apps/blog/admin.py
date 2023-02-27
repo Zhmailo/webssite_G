@@ -1,9 +1,8 @@
 from django.contrib import admin
-from apps.blog.models import BlogCategory, Article, Tag
+from apps.blog.models import BlogCategory, Article, Tag, Comment
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.http import urlencode
-
 
 admin.site.register(Tag)
 
@@ -45,3 +44,12 @@ class ArticleAdmin(admin.ModelAdmin):
         return format_html(result)
 
     tag_links.short_description = 'Теги'
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'is_checked']
+    list_display_links = ['id', 'name']
+
+    def has_add_permission(self, request):
+        return False
