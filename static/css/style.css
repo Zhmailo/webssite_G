@@ -4,10 +4,13 @@
 /*}*/
 
 #logo{
-    max-width: 200px;
-    width: 100%;
-    border-radius: 20px;
-    margin-top: 10px;
+    max-width: 1000px;
+    width: 150%;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+.modalTour{
+   color: rgb(30, 30, 30);
 }
 .main-menu{
     margin-top: 15px;

@@ -10,12 +10,11 @@ class Page(MetaTagMixin):
     slug = models.SlugField(unique=True)
     text = HTMLField(verbose_name='Опис', null=True)
 
-
     def __str__(self):
         return self.name
-
 
     class Meta:
         verbose_name = 'Інформаційна сторінка'
         verbose_name_plural = 'Інформаційні сторінки'
+
 
