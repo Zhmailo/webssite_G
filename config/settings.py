@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'tinymce',
+    'adminsortable2',
     'apps.blog',
     'apps.user',
     'apps.catalog',
