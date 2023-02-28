@@ -3,8 +3,6 @@ from apps.main.models import Page, ProductSet
 from adminsortable2.admin import SortableAdminMixin
 
 
-# Register your models here.
-
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
     pass
@@ -12,7 +10,7 @@ class PageAdmin(admin.ModelAdmin):
 
 class ProductSetProductInline(admin.TabularInline):
     model = ProductSet.products.through
-    extra = 1
+    extra = 2
 
 
 @admin.register(ProductSet)

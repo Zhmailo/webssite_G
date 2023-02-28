@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <h3 class="my-header">Дякуємо! Ваш коментар додано</h3>
+    {% if not comment.user %}
+        <p class="text-info">Ваш коментар надіслано</p>
+    {% endif %}
+    <p class="text-center">
+        <a href="{% url 'blog_article_view' category_id=article.category_id article_id=article.id %}">Назад</a>
+    </p>
+    {% endblock %}

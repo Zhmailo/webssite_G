@@ -14,5 +14,5 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('about/', include('apps.about.urls')),
     path('more/', include('apps.more.urls')),
-    path('', include('apps.main.urls')),
+    path('', include('apps.main.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
