@@ -2,12 +2,41 @@
 /*    background-image: url("../img/bg.png");*/
 /*    background-attachment: fixed ;*/
 /*}*/
-
-#logo{
-    max-width: 200px;
+.top-information__inner[_ngcontent-rz-client-c106] {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    height: 32px;
+    margin: 0 auto;
+}
+.payments-buttons[_ngcontent-rz-client-c135] {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.payments-buttons__button[_ngcontent-rz-client-c135] {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#smallphoto1{
+    width: 200px;
+    height: 410px;
+    margin: 0 auto;
+
+}
+
+#logo1{
+    max-width: 1000px;
+    width: 1000%;
     border-radius: 20px;
-    margin-top: 10px;
 }
 .main-menu{
     margin-top: 15px;

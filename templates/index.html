@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block meta_tags %}
+
 <div class="b-example-divider b-example-vr"></div>
 
 {#<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">#}
@@ -85,6 +86,43 @@
 
 
 {% block content %}
+
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <a href="http://127.0.0.1:8000/catalog/product/noutbuk-acer-aspire/"><img src="https://content2.rozetka.com.ua/files/images/original/315022359.jpg" class="d-block w-100" alt=""></a>
+      <div class="carousel-caption d-none d-md-block">
+          <a class="nav-link" href="http://127.0.0.1:8000/catalog/noutbuki-dlya-gejmeriv/"><h5>Ноутбуки для геймерів</h5></a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://content2.rozetka.com.ua/files/images/original/315031027.jpg" class="d-block w-100" alt="" id="smallphoto1">
+      <div class="carousel-caption d-none d-md-block">
+          <a class="nav-link" href="http://127.0.0.1:8000/catalog/product/mic-ukrayinska-kamyana/"><h5>Міць. Українська кам’яна.</h5></a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://content1.rozetka.com.ua/promotions/main_image_ua/original/317184647.jpg" class="d-block w-100" alt="" id="smallphoto1">
+      <div class="carousel-caption d-none d-md-block">
+          <a class="nav-link" href="http://127.0.0.1:8000/catalog/posudomijni-ta-pralni-mashini/"><h5>Посудомийні та пральні машини</h5></a>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
 {#    <main class="b-example-divider b-example-vr">#}
 {#        <h1 class="word-1">Привіт! Ви на головній сторінці GStore!</h1>#}
 {#        <h3 class="word-1">У цьому магазині ви зможете замовити налаштування офісу та обладнання. А також багато свіжих новин про світ IT і знаходити безліч статей про різні мови програмування. Сподіваюся вам сподобається!</h3></main>#}
@@ -97,6 +135,7 @@
 {#        {% include 'main/_product_set.html' %}#}
 {#    {% endfor %}#}
 {% endblock %}
+
 <footer class="footer mt-auto py-3 bg-light">
   <div class="container">
     <span class="text-muted">Place sticky footer content here.</span>

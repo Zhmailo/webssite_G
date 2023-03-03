@@ -24,11 +24,21 @@
     <script src="{% static 'owlcarousel2/owl.carousel.min.js' %}"></script>
 </head>
 <body>
-
+<rz-top-page-banner _nghost-rz-client-c106="" style="display: block;">
+    <div _ngcontent-rz-client-c106="" aria-hidden="true" class="top-information ng-star-inserted"
+         style="background-color: rgb(107, 245, 255);">
+        <div _ngcontent-rz-client-c106="" class="top-information__inner"><a _ngcontent-rz-client-c106="" tabindex="-1"
+                                                                            class="top-information__inner ng-star-inserted"
+                                                                            href="Ссылка!!!!!!!!!!!!!!!"
+                                                                            target="_self"><img
+                _ngcontent-rz-client-c106="" loading="lazy" alt="" class="top-information__picture ng-star-inserted"
+                src="https://content.rozetka.com.ua/banner_header/image_ua/original/316741512.jpg"><!----></a><!---->
+            <!----><!----></div>
+    </div><!----><!----><!----><!----></rz-top-page-banner>
 <div class="container">
     <div class="row main-header">
         <div class="col-6">
-            <img src="{% static 'img/webphoto.jpg' %}" alt="" id="logo">
+            <img src="{% static 'img/webphoto1.jpg' %}" alt="" id="logo1">
         </div>
         {% if request.user.is_authenticated %}
             <p class="text-end">Привіт, {{ request.user.username }} (<a href="{% url 'logout' %}">Вийти</a>)
@@ -38,6 +48,7 @@
             </p>
         {% endif %}
     </div>
+
     <div class="row main-menu">
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
@@ -62,10 +73,11 @@
                         </li>
 
                         {#<li class="nav-item">#}
-                         {#   <a class="nav-link" href="{% url 'page' slug='contacts' %}">Контакти</a>#}
+                        {#   <a class="nav-link" href="{% url 'page' slug='contacts' %}">Контакти</a>#}
                         {#</li> #}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'page' slug='payment-and-shipping' %}">Оплата та доставка</a>
+                            <a class="nav-link" href="{% url 'page' slug='payment-and-shipping' %}">Оплата та
+                                доставка</a>
                         </li>
 
                     </ul>
@@ -85,7 +97,6 @@
                 </ul>
             </div>
     </div>
-</div>
 
 
 <div class="container">
@@ -97,6 +108,7 @@
 </div>
 
 <div class="text-center p-4" style="background-color: rgba(248, 249, 250);">
-          © Інтернет-магазин «GStore™» 2022–2023:
-          <a class="text-reset fw-bold" href="http://127.0.0.1:8000/">GStore</a>
-        </div>
+    © Інтернет-магазин «GStore™» 2022–2023:
+    <a class="text-reset fw-bold" href="http://127.0.0.1:8000/">GStore</a>
+    <p class="text-center text-info">{{ SETTINGS.footer_text }}</p>
+</div>
