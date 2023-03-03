@@ -1,36 +1,27 @@
 {% extends 'base.html' %}
 
 {% block meta_tags %}
-    {% include '_meta_tags.html' with meta_title=article.get_meta_title meta_description=article.meta_description meta_keywords=article.meta_keywords%}
-{% endblock %}
-
-{% block breadcrumbs %}
-    {% include '_breadcrumbs.html' %}
+    {% include '_meta_tags.html' with meta_title=article.get_meta_title meta_description=article.meta_description meta_keyword=article.meta_keywords %}
 {% endblock %}
 
 {% block content %}
     <h2>{{ article.title }}</h2>
     {% if article.image %}
-        <img class='img-thumbnail' src="{{ article.image.url }}" alt="">
+        <img class="img-thumbnail" src="{{ article.image.url }}" alt="">
     {% endif %}
-
 
     <p>{{ article.text }}</p>
 
-
     <p>
-        {% for tag in article.tag.all %}
-            <a href="{% url 'blog_tag_article' tag_id=tag.id %}">#{{ tag.name }}</a>&nbsp;
+        {% for tag in article.tags.all %}
+            <a href="{% url 'tag_search_view' tag_id=tag.id %}">#{{ tag.name }}</a>&nbsp;
         {% endfor %}
 
     </p>
 
     <p style="text-align: right">
         Дата: <b>{{ article.publish_date }}</b>
-    </p>
-
-    <p style="text-align: right">
-        Категорія: <b>{{ category.name }}</b>
+        Категория: <b>{{ category.name }}</b>
     </p>
 
     {% if article.user %}
@@ -40,7 +31,7 @@
                     <span class="avatar">
                         <img src="{{ article.user.image_thumbnail.url }}" alt="">
                     </span>
-                {% endif %}
+                {% endif %} 
                 {% if article.user.first_name %}
                     <span class="author-name">{{ article.user.first_name }} {{ article.user.last_name }}</span>
                 {% else %}
@@ -50,38 +41,56 @@
         </div>
     {% endif %}
 
-    {% for comment in comments %}
-        <h4>{{ comment.name }}</h4><h5>{{ comment.text }}</h5>
-    {% endfor %}
-
-
-    <h3 class="my-header">Добавити комент</h3>
 
     <div class="row">
+        <div class="col-sm-12 col-md-3"></div>
         <div class="col-sm-12 col-md-6">
+            <h3 class="my-header">Залешіть коментар</h3>
             {% if error %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}
                 </div>
             {% endif %}
-            <form method="post">
+            <form method="post" action="{% url 'create_comment' article_id=article.id %}">
                 {% csrf_token %}
+
+                {% if not request.user.is_authenticated %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Імя</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                {% endif %}
+
                 <div class="mb-3">
-                    <label for="name" class="form-label">Ім'я</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ form.data.name }}" required>
+                    <label for="text" class="form-label">Текст коментаря</label>
+                    <textarea name="text" id="text" rows="4" class="form-control" required></textarea>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{ form.data.email }}" required>
-                </div>
-                <div class="mb-3">
-                    <label for="text" class="form-label">Текст</label>
-                    <textarea name="text" id="text" class="form-control" rows="3">{{ form.data.text }}</textarea>
-                </div>
-                <button type="submit" class="btn btn-success">Створити коментар</button>
+
+                <button type="submit" class="btn btn-primary">Зберегти</button>
             </form>
         </div>
     </div>
 
-
+    {% if comments %}
+        <div class="row">
+            <div class="col-sm-12 col-md-3"></div>
+            <div class="col-sm-12 col-md-6">
+                <h3 class="text-center">Коментарі</h3>
+                {% for comment in comments %}
+                    {% if comment.user %}
+                        <p><b>{{ comment.user.first_name }} {{ comment.user.last_name }}</b></p>
+                    {% else %}
+                        <p><b>{{ comment.name }}</b></p>
+                    {% endif %}
+                    <blockquote>{{ comment.text }}</blockquote>
+                    <p class="text-end"><i>{{ comment.created_at }}</i></p>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
